@@ -17,8 +17,14 @@ export class UsersService{
         return user;
     }
     //Encontrar un user
+    
     findOne(id: number){
-        return this.userRepo.findOneBy({id})
+        return this.userRepo.findOne({
+            where: {id},
+            relations: {
+                images: true,
+            },
+        });
     }
     //mostrar todos los usuarios
     findAll(){
